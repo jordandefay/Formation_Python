@@ -1,0 +1,67 @@
+Formation Python 
+
+Différentes commandes :
+#coding:utf-8 (à mettre en début de fichier, normalement il l'est déjà par défaut)
+input() = lire au clavier
+type() = retourne le type d'une donnée, variable, etc.
+str.format() = formater une chaîne
+int(), float(), str(), bool() = "caster une donnée; la convertir
+print("") ou print('') = sert à afficher un texte à l'écran  (print est une fonction)
+
+Exemple : 
+$ print("Hello World!")
+$ print('Hello World!')
+$ print('L\envers du décor') [pour les simples quotes uniquement]
+$ print("L'envers\n du décor") [\n permet un retour à la ligne]
+$ print("\tL'envers du décor") [\t permet la tabulation]
+
+Les variables
+- Doit commencer par une lettre ou un underscore
+- Ne doit pas contenir de caractères spéciaux
+- Ne pas contenir d'espaces
+- Utiliser des underscores
+* Il est meilleur d'utiliser la même syntaxe tout au long de son code
+
+Exemple : 
+agePersonne
+age_personne
+agepersonne
+AgePersonne
+Age_Personne
+_AgePersonne
+
+Types standards : 
+- Entier numérique (int)
+- Nombre flottant (float)
+- Chaîne de caractéres (str)
+- Booléen (bool)
+
+Exemples :
+$ agePersonne = 14 (sera considéré comme un entier)
+$ prixHT = 120.46
+$ agePersonne2 = "25" (sera considéré comme un texte)
+$ continuer_partie = True
+$ print("Âge de la personne :", agePersonne)      (en enlevant les doubles quotes, Python récupera la donnée de la variable précedemment crée)
+$ print(type(agePersonne2))
+
+$ texte = "L'âge de la personne est {} et le prix HT est de {} euros."
+$ print(texte.format(agePersonne, prixHT))
+ou 
+$ print("L'age de la personne est {} et le prix HT est de {} euros.".format(agePersonne, prixHT))
+
+La fonction input
+$ nomJoueur = input("Choisissez un nom de joueur : ")
+$ print("Bienvenue, ", nomJoueur)
+
+Les différentes fonctions int(), float(), str(), bool()
+int() :
+$ prixHT = input("Entrez un prix HT : ")
+$ prixHT = int(prixHT)                (int permet de convertir le prixHT en donnée chiffrable et il n'est plus considéré comme une chaîne de caractére par Python)
+$ prixTTC = prixHT + (prixHT * 20 / 100)
+$ print("Prix TTC=", prixTTC)
+
+bool() : 
+$ valeur_booleen = False
+$ valeur_booleen = int(valeur_booleen)
+$ 0
+
