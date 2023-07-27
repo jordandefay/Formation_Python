@@ -65,3 +65,28 @@ $ valeur_booleen = False
 $ valeur_booleen = int(valeur_booleen)
 $ 0
 
+Opérateurs en Python : 
++ (addition)
+- (soustraction)
+* (multiplication)
+/ (division)
+% (modulo) reste d'une division Euclidienne
+
+Exemple : 
+$ calcul = 5 / 2
+$ calcul = int(calcul)
+$ print("Résultat =", calcul)
+
+$ calcul = 5 / 2
+$ calcul = float(calcul)
+$ calcul2 = 5 % 2
+$ calcul2 = int(calcul2)
+$ print("Résultat=", calcul, "reste", calcul2)
+
+$ niveauPersonnage = input("Niveau de départ ? ")
+$ niveauPersonnage = int(niveauPersonnage)
+$ print("Niveau du personnage", niveauPersonnage)
+$ print("Combat réussi, tu gagnes deux niveaux !")
+$ niveauPersonnage = niveauPersonnage + 2
+$ print("Niveau du personnage", niveauPersonnage)
+
