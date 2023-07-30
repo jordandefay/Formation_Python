@@ -90,3 +90,77 @@ $ print("Combat réussi, tu gagnes deux niveaux !")
 $ niveauPersonnage = niveauPersonnage + 2
 $ print("Niveau du personnage", niveauPersonnage)
 
+# Les conditions 
+
+Exemple : 
+
+$ identifiant : "Jawad"
+$ mot_de_passe : "password123"
+$ print("Interface de connexion")
+
+$ user_id = input("Entrez votre identifiant : ")
+$ user_password = input("Entre votre mot de passe : ")
+$ if user_id and user_password == mot_de_passe:
+     $ print("Vous êtes connectés, bienvenue", user_id) # print est dans le if
+
+print("Je ne suis plus dans le 'if'")
+
+Les opérateurs de comparaison : 
+
+== (égal à)
+!= (différent de)
+< (plus petit que)
+> (plus grand que)
+<= (plus petit ou égal à)
+>= (plus grand ou égal à)
+
+Mots clés des conditions : if / elif / else
+Les conditions multiples : 
+and (ET)
+or (OU)
+in / not in (DANS / PAS DANS)
+
+Exemple : 
+$ lettre_hasard = "b"
+$ if lettre_hasard in "aeiouy":
+    $ print("C'est une consonne")
+$ else:
+     $ print("C'est une voyelle")
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$ age = 24
+$ if age == 18:
+    $ print("Tu viens d'être majeur")
+$ elif age == 50:
+    $ print ("Tu viens d'avoir 50 ans")
+$ elif age == 60:
+     $ print("Tu viens d'avoir 60 ans")
+$ else:
+    $ print("Tu as", age, "ans")
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$ jeu_charge = True # True = vrai (= 1)
+$ if jeu_charge:
+    $ print("Le jeu est en marche")
+$ else: 
+        $ print("Le jeu est lancé")
+
+$ jeu_charge = False # False = faux (= 0)
+$ if not jeu_charge:
+    $ print("Le jeu est éteint")
+$ else: 
+        $ print("Le jeu est lancé")
+$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$ age = input("Que âge as-tu ? ")
+$ age = int(age)
+
+$ if age > 0 and age < 100:
+       $ print("L'âge est validé")
+$ else: 
+         $ print("L'âge est incorrect.")
+
+# Au lieu du code précédent, nous pouvons noter :
+
+$ age > 0 ET age <= 100 --> 0 > age <= 100
+$ if 0 < age <= 100:
+        $  print("L'âge est validé")
+$ else: 
+         $ print("L'âge est incorrect")
