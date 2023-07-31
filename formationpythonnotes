@@ -1,7 +1,7 @@
 Formation Python 
 
 Différentes commandes :
-#coding:utf-8 (à mettre en début de fichier, normalement il l'est déjà par défaut)
+$ #coding:utf-8 (à mettre en début de fichier, normalement il l'est déjà par défaut)
 input() = lire au clavier
 type() = retourne le type d'une donnée, variable, etc.
 str.format() = formater une chaîne
@@ -11,7 +11,7 @@ print("") ou print('') = sert à afficher un texte à l'écran  (print est une f
 Exemple : 
 $ print("Hello World!")
 $ print('Hello World!')
-$ print('L\envers du décor') [pour les simples quotes uniquement]
+ $ print('L\envers du décor') [pour les simples quotes uniquement]
 $ print("L'envers\n du décor") [\n permet un retour à la ligne]
 $ print("\tL'envers du décor") [\t permet la tabulation]
 
@@ -73,22 +73,22 @@ Opérateurs en Python :
 % (modulo) reste d'une division Euclidienne
 
 Exemple : 
-$ calcul = 5 / 2
-$ calcul = int(calcul)
-$ print("Résultat =", calcul)
+calcul = 5 / 2
+calcul = int(calcul)
+print("Résultat =", calcul)
 
-$ calcul = 5 / 2
-$ calcul = float(calcul)
-$ calcul2 = 5 % 2
-$ calcul2 = int(calcul2)
-$ print("Résultat=", calcul, "reste", calcul2)
+calcul = 5 / 2
+calcul = float(calcul)
+calcul2 = 5 % 2
+calcul2 = int(calcul2)
+print("Résultat=", calcul, "reste", calcul2)
 
-$ niveauPersonnage = input("Niveau de départ ? ")
-$ niveauPersonnage = int(niveauPersonnage)
-$ print("Niveau du personnage", niveauPersonnage)
-$ print("Combat réussi, tu gagnes deux niveaux !")
-$ niveauPersonnage = niveauPersonnage + 2
-$ print("Niveau du personnage", niveauPersonnage)
+niveauPersonnage = input("Niveau de départ ? ")
+niveauPersonnage = int(niveauPersonnage)
+print("Niveau du personnage", niveauPersonnage)
+print("Combat réussi, tu gagnes deux niveaux !")
+niveauPersonnage = niveauPersonnage + 2
+print("Niveau du personnage", niveauPersonnage)
 
 # Les conditions 
 
@@ -126,7 +126,7 @@ $ if lettre_hasard in "aeiouy":
     $ print("C'est une consonne")
 $ else:
      $ print("C'est une voyelle")
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+----------------------------------------------------------
 $ age = 24
 $ if age == 18:
     $ print("Tu viens d'être majeur")
@@ -148,7 +148,7 @@ $ if not jeu_charge:
     $ print("Le jeu est éteint")
 $ else: 
         $ print("Le jeu est lancé")
-$$$$$$$$$$$$$$$$$$$$$$$$$$$
+------------------------------------------------------------
 $ age = input("Que âge as-tu ? ")
 $ age = int(age)
 
@@ -164,3 +164,38 @@ $ if 0 < age <= 100:
         $  print("L'âge est validé")
 $ else: 
          $ print("L'âge est incorrect")
+
+# Les boucles
+
+Boucles : while/for
+Mots-clés : break (casse la boucle) / continue (revient au début de la boucle)
+Exemples : 
+
+$ compteur = 0
+
+$ while compteur < 5:
+          $ print("Je suis une phrase")
+          $ compteur += 1
+
+$ print("Je suis sorti de la boucle...")                 # Lorsqu'il n'y plus la tabulation, on sort du while
+
+-------------------------------------------------------------------------
+jeu_lance = True
+print("")
+
+while jeu_lance:
+       $Fais des instructions en rapport avec le jeu
+       $ choixMenu = input("> ")
+
+       $ if choixMenu == "again":
+               continue
+       $ elif choixMenu == "quit":
+                  jeu_lance = False
+        $ elif choixMenu == "hello":
+                 print("Bonjour : ) !")
+        $ else: 
+                 $ print("Commande introuvable")
+         
+
+$ print("à bientôt...")
+
