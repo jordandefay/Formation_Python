@@ -136,7 +136,7 @@ $ elif age == 60:
      $ print("Tu viens d'avoir 60 ans")
 $ else:
     $ print("Tu as", age, "ans")
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+----------------------------------------------------------
 $ jeu_charge = True # True = vrai (= 1)
 $ if jeu_charge:
     $ print("Le jeu est en marche")
