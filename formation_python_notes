@@ -136,7 +136,7 @@ $ elif age == 60:
      $ print("Tu viens d'avoir 60 ans")
 $ else:
     $ print("Tu as", age, "ans")
-----------------------------------------------------------
+----------------------------------------
 $ jeu_charge = True # True = vrai (= 1)
 $ if jeu_charge:
     $ print("Le jeu est en marche")
@@ -199,3 +199,113 @@ while jeu_lance:
 
 $ print("à bientôt...")
 
+# Les fonctions (def)
+
+$ def dire(nom_personne="Tom", message_personne="Salut !", age_personne=18):
+    $ print("{} ({} ans) : {}".format(nom_personne, age_personne, message_personne)
+$ dire(nom_personne="Jason", age_personne=26)
+------------------------------------------------------------------------
+$ def show_inventory(*list_items):
+         $ for item in list_items:
+                  $ print(item):
+
+$ show_inventory("épée)
+$ show_inventory("épée, "arc", "cape", "bouclier")
+
+# Les valeurs de retour
+$ def calculer_somme(nombre1, nombre2):
+          $ resultat = nombre1 + nombre2
+          $ return resultat
+
+$ print(calculer_somme(5, 16))
+
+ou
+$ def calculer_somme(nombre1 + nombre2):
+          $ return nombre1 + nombre 2
+
+$ print(calculer_somme(5, 16))
+
+# Modularité
+
+- Les fonctions lambdas : elle ne réalise qu'une seule instruction
+$ coucou = lambda:print("Bonjour")            #si on l'exécute, cela n'affiche rien du tout, nous avons seulement défini une fonction
+$ coucou()               #si on l'exécute, cela affiche Bonjour, comme définit ci dessus
+ou
+$ calculer = lambda a, b : a + b
+$ print(calculer(14, 27))
+
+Les modules
+Importer un module : import <nom_module>
+from <nom_module> import <nom_fonction>
+from <nom_module> import *
+
+Exemples :
+$ resultat = sqrt(100)
+
+$ print(resulat)          #Cela ne fonctionne pas car il n'y pas le module requis (math)
+
+Ce qui est juste : 
+$ import math
+$ resultat = math.sqrt(100)
+$ print(resultat)
+ou
+$ from math import sqrt
+$ resultat = sqrt(100)
+$ print(resultat)
+ou 
+$ from math import *
+$ resultat = sqrt(100)
+$ print(resultat)
+
+Pour créer un module, il faut créer un nouveau fichier dans le dossier du projet (ressemble au principe CSS avec HTML5)
+Exemple : 
+$ def parler(personnage, message):
+        $ print("{} : {}".format(personne, message))
+
+$ def au_revoir():
+        $ print("Au revoir !")
+
+- Ensuite dans main, écrire : 
+$ import player # ceci est la commande permettant de charger le module précedemment crée
+$ player.au_revoir()
+$ player.parler("Jason", "Salut les abonnés ! ")
+
+- Si l'on souhaite déplacer le module dans un sous-dossier (p.ex includes) où se trouve notre fichier main : 
+$ import includes.player as player 
+$ player.au_revoir()
+$ player.parler("Jason", "Salut les abonnés!")
+
+Gestion des erreurs 
+- Types d'exceptions : ValueError
+NameError
+TypeError
+ZeroDivisionError
+OSError
+AssertionError
+
+$ ageUtilisateur = input("Quel âge as-tu ? ")
+$ try : #permet d'essayer l'instruction
+        ageUtilisateur = int(ageUtilisateur)
+$ except : # ce qui se passe en cas d'échec
+         $ print("L'âge indiqué est incorrect !")
+$ else: # ce qui se passe en cas de réussite
+         $  print("Tu as", ageUtilisateur, "ans")
+$ finally: # affichera dans tout les cas
+         $ print("FIN DU PROGRAMME...")
+ou
+$ nombre1 = 150
+$ nombre2 = input("Choisir le nombre pour diviser : ")
+$ try: 
+       $ nombre2 = int(nombre2)
+       $ print("Résultat = {}".format(nombre1 / nombre2))
+$ except ZeroDivisionError:
+             $ print("Vous ne pouvez pas diviser par zéro.")
+$ except ValueError:
+            $ print("Vous devez entrer un nombre.")
+$ except:
+           $ print("Valeur incorrecte.")
+$ else:
+           $ print("Bravo, tu as noté un nombre valide ! ")
+$ finally:
+          $ print("Fin du programme...")
+ou pour lever l'exception 
