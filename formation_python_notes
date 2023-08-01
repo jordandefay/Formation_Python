@@ -309,3 +309,39 @@ $ else:
 $ finally:
           $ print("Fin du programme...")
 ou pour lever l'exception 
+
+$ try:
+          $ age = input("Quel âge as-tu ? ")
+           $ age = int(age)
+          $ if age < 25:
+                $ raise ZeroDivisionError
+$ except ZeroDivisionError: 
+            $ print("J'ai attrapé ton exception inutile")
+
+AssertionError
+try:
+           $ age = input("Quel âge as-tu ?")
+           $ age = int(age)
+            $ assert age < 25 # Je veux que âge soit plus grand que 25
+$ except AssertionError:
+        $ print("J'ai attrapé l'exception")
+
+La Programmation Orienté Objet avec le langage Python (POO)
+Ce que l'on a vu :
+- Afficher du texte (print)
+- Saisir des informations 
+- Variables 
+- Conditions et boucles
+- Fonctions et modularité
+- Gestion des erreurs
+
+Notions de base : 
+- Classe : plan de conception, genre (Humain)
+- Objet : instance de classe (Julien (est un objet de classe Humain)
+- Attribut : variable de classe (nom, age, sexe, taille...)
+- Propriété : maniére de manipuler les attributs (lecture seule, accés non autorisé en dehors de la classe...)
+- Méthode : fonction d'une classe (ex : manger, marcher, parler, dormir, mourir)
+- Méthode de classe : fonction d'une  classe (explication à venir plus tard...)
+- Méthode statique : fonction d'une classe, mais indépendante de celle-ci (on peut trés bien crée une fonction de classe même en dehors de tout objet)
+- Héritage : classe Fille qui hérite d'une classe Mére (Fille est une sorte de Mére) 
+           : classe Chat hérite de la classe Animal (Chat est une sorte d'Animal)
