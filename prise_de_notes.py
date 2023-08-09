@@ -347,4 +347,4 @@ except AssertionError:
 # Méthode de classe : fonction d'une classe (explication à venir plus tard)
 # Méthode statique : fonction d'une classe, mais indépendante de celle-ci (on peut trés bien crée une fonction de classe même en dehors de tout objet)
 # Héritage : classe Fille qui hérite d'une classe Mére (Fille est sorte de Mére)
-        #  : classe Chat hérite de la classe Animal (Chat est une sorte d'Animal)
+#          : classe Chat hérite de la classe Animal (Chat est une sorte d'Animal)
