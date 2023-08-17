@@ -330,7 +330,7 @@ except AssertionError:
     print("J'ai attrapé l'exception")
 
 #La Programmation Orienté Objet avec le langage Python (POO)
-#CE que l'on a vu :
+#Ce que l'on a vu :
 # Afficher du texte (print)
 # Saisir des informations
 # Variables
@@ -347,4 +347,273 @@ except AssertionError:
 # Méthode de classe : fonction d'une classe (explication à venir plus tard)
 # Méthode statique : fonction d'une classe, mais indépendante de celle-ci (on peut trés bien crée une fonction de classe même en dehors de tout objet)
 # Héritage : classe Fille qui hérite d'une classe Mére (Fille est sorte de Mére)
-#          : classe Chat hérite de la classe Animal (Chat est une sorte d'Animal)
+#          : classe Chat hérite de la classe Animal
+
+# La programmation orienté objet (POO) avec le language Python
+
+# Classe : plan de conception, genre (ex: Humain)
+# Objet : instance d'une classe (ex : Julien, est un objet de classe Humain)
+# Attribut : variable de classe (ex : prénom, âge, taille, sexe)
+
+class Humain:
+    """
+    Classe des êtres humains
+    """
+    def __init__(self, c_prenom, c_age=1):
+        print("Création d'un Humain...")
+        self.prenom = c_prenom
+        self.age = c_age
+print("Lancement du programme...")
+
+h1 = Humain("Jojo")
+print("Prénom de h1 -> {}".format(h1.c_prenom))
+print("Age de h1 -> {}".format(h1.c_age))
+
+
+h2 = Humain("Albert")
+print("Prénom de h2 -> {}".format(h2.c_prenom))
+print("Age de h2 -> {}".format(h2.c_age))
+
+###################################
+
+class Humain:
+    """
+    Classe des êtres humains
+    """
+    humains_crees = 0
+
+    def __init__(self, c_prenom, c_age=1):
+        print("Création d'un Humain...")
+        self.prenom = c_prenom
+        self.age = c_age
+        Humain.humains_crees += 1
+
+print("Lancement du programme...")
+
+h1 = Humain("Jojo", 34)
+print("Humains existants : {}".format(Humain.humains_crees))
+
+h2 = Humain("Albert", 87)
+print("Humains existants : {}".format(Humain.humains_crees))
+
+
+# Les méthodes (statiques)
+
+class Humain:
+    """
+    Classe qui définit un humain
+    """
+    lieu_habitation = "Terre"
+    def __int__(self, nom, age):
+        self.nom = nom
+        self.age = age
+    def parler(self, message):
+        print("{} a dit : {}".format(self.nom, message))
+    def changer_planete(cls, nouvelle_planete): #cls = méthode de classe
+        Humain.lieu_habitation = nouvelle_planete
+    changer_planete = classmethod(changer_planete)
+
+    def definition():
+        print("L'humain est en haut de la chaîne alimentaire")
+
+    definition = staticmethod(definition)
+#Programme principal
+
+h1 = Humain("Jordan", 29)
+
+h1.parler("Bonjour à tous !")
+h1.parler("Comment allez-vous ?")
+print("Planète actuelle : {}".format(Humain.lieu_habitation))
+
+# Les propriétés d'encapsulation
+"""
+Propriété : manière de manipuler/contrôler des attributs
+            principe d'encapsulation ! 
+"""
+
+class humain:
+    def __init__(self, nom, age):
+        print("Création d'un humain...")
+        self.nom = nom
+        self._age = age
+
+    def _getage(self):
+        return self._age
+    def _setage(self, nouvel_age):
+        if nouvel_age < 0:
+            self._age = 0
+        self._age = nouvel_age
+
+    def _delage(self):
+        del self._age
+
+# property (<getter>, <setter>, <deleter>, <helper>)
+age = property(_getage, _setage, _delage)
+
+#Héritage
+
+#Classe Mére
+class Vehicule:
+
+    def __init__(self, nom, quantite_essence):
+        self.nom = nom
+        self.essence = quantite_essence
+    def se_deplacer(self):
+        print("Le véhicule se déplace".format(self, nom))
+#Classe Fille
+
+class Voiture(Vehicule):
+    def __init__(self, nom_voiture, essence, puissance):
+        Vehicule.__init__(self, nom_voiture, essence)
+        self.puissance = puissance
+#Programme principal
+voiture1 = Voiture("Fiat Uno", 42, 90)
+voiture1.se_deplacer()
+
+#Exemple
+
+#Classe Mére 1
+class ObjetJeu:
+    pass
+
+#Classe Mére
+class Arme:
+    pass
+
+#Classe Fille
+class Fusil(Arme, ObjetJeu):
+    pass
+#-----------------------------------------------------------------------------------------------------------------------
+class Etudiant:
+    pass
+
+class Enseignant:
+    pass
+
+class Doctorant(Etudiant, Enseignant):
+    pass
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+"""
+Fonctions utiles : 
+    isinstance(<objet>, <classe>) : vérifie qu'un objet est de la classe renseignée
+    
+    issubclass(<class_fille>, <classe_mere>) : vérifie qu'une classe est fille d'une autre
+"""
+class Animal:
+    def __init__(self, nom):
+        self.nom = nom
+
+    def manger(self):
+        print(self.nom, "mange...")
+
+class Reptile(Animal):
+    def __init__(self, nom, regime_alimentaire):
+        Animal.__init__(self, nom)
+        self.regime = regime_alimentaire
+
+    def manger(self):
+        print("Le reptile mange...")
+
+#Code principal
+lezard = Reptile("Lézard", "grenouilles")
+if isinstance(lezard, Reptile):
+    print("Lézard est un Animal")
+
+"""
+Pour vérifier qu'une classe est bien une classe Fille : 
+if issubclass(Reptile, Animal:
+    print("Reptile hérite d'Animal")
+"""
+
+#Les chaînes de caractères
+
+# Classe str : string (chaînes de caractères)
+
+help(str) # Pour avoir de la doc python (dans ce cas là ce sera sur str)
+
+#-----------------------------------------------------------------------------------------------------------------------
+"""
+Une méthode de chaîne travaille sur une copie et pas sur la chaîne elle-même.
+
+str.upper(), str.lower(), str.capitalize(), str.title()
+str.center(<largeur>, <caractere_remplissage>)
+
+str.find(<chaine>, <debut>, <fin>)
+str.index(<chaine>, <debut>, <fin>)
+str.replace(<ancienne>, <nouvelle>, <occurences>)
+
+str.isalpha(), str.isdigit(), str.isdecimal(), str.isnumeric
+str.isalphanum()
+
+str.islower(), str.isupper()
+
+str.isidentifier(), str.iskeyword()
+"""
+
+ma_chaine = "Bonjour tout le monde"
+
+ma_chaine = ma_chaine.upper()
+
+print(ma_chaine)
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+ma_chaine = "MonSuperProgramme"
+print(ma_chaine)
+
+ma_chaine = ma_chaine.center(50, "-")
+print(ma_chaine)
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Classe str : string (chaînes de caractères)
+# Par exemple, pour verifier si "class" est un mot réservé sous Python avec str.isidentifier()
+ch = "class"
+
+if ch.isidentifier():
+    print("Réservé")
+else:
+    print("Libre")
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Listes
+
+# Création d'une liste
+
+inventaire = list(1, 6, 154, "voiture")
+print(inventaire)
+
+inventaire1 = list("arc") * 10
+print(inventaire1)
+
+inventaire2 = range(20)
+i = 0
+while i < len(inventaire2):
+    print(inventaire2[i])
+    i += 1
+
+#-----------------------------------------------------------------------------------------------------------------------
+"""
+liste[X] = affiche élément d'indice X
+liste[-X] = affiche Xéme élément en partant de la fin
+
+liste[:] = affiche tous les éléments
+liste[:X] affiche les X premiers éléments
+liste[X:] = affiche les X derniers éléments
+
+liste[A:B]= affiche de l'élément d'indice A à l'élément indice B (exclus)
+"""
+
+inventaire3 = ["Arc", "épée", "bouclier", "potion", "armure"]
+#Arc : indice 0 (1er élément)
+#épée : indice 1 (2eme élémént)
+#bouclier : indice 2 (3eme élément)
+
+print(inventaire3[:]) # Affichera la totalité des éléments.
+print(inventaire3[0]) # Affichera la chaine de caractére 'arc' qui corresponds à l'indice 0.
+print(inventaire3[3:]) # Affichera les trois derniers éléments seulement.
+print(inventaire3[-3]) # Affichera le troisiéme élément en partant de la fin.
+print(inventaire3[-1]) # Affichera le dernier élément.
