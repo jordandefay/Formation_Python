@@ -617,3 +617,134 @@ print(inventaire3[0]) # Affichera la chaine de caractére 'arc' qui corresponds 
 print(inventaire3[3:]) # Affichera les trois derniers éléments seulement.
 print(inventaire3[-3]) # Affichera le troisiéme élément en partant de la fin.
 print(inventaire3[-1]) # Affichera le dernier élément.
+# Pour changer l'élément d'un indice
+
+inventaire3[:2] = ["bouclier d'acier"] * 2 #len(inventaire3) pour modifier tous les éléments
+print(inventaire3[:])
+
+# Pour vérifier qu'un élément est présent dans la liste
+inventaire4 = ["Arc", "épée", "bouclier", "potion", 16]
+
+if "bouclier" in inventaire4:
+    print("Je posséde un bouclier.")
+
+else:
+    print("Je n'ai pas de bouclier.")
+
+# Les méthodes dans les listes
+
+inventaire5 = []
+print(inventaire5[:])
+
+inventaire5.append("Arc") # permet d'ajouter un élément à la liste
+print(inventaire5[:])
+
+inventaire6 = ["Arc", "Bouclier", "Manteau de cuir"]
+print(inventaire6[:])
+
+inventaire6.insert(1, "Potion de mana") # permet d'insérer un élément entre plusieurs éléments
+print(inventaire[:])
+
+inventaire6.remove("Bouclier") # permet de supprimer un élément
+print(inventaire6[:])
+
+del inventaire6[1] # permet de supprimer un élément mais cette fois ci avec del
+print(inventaire6[:])
+
+objet_a_supprimer = inventaire6.index("Bouclier)") # permet de créer un index et de supprimer l'élément choisi
+del inventaire6[objet_a_supprimer]
+
+print(inventaire6[:])
+
+# Création d'une liste de chiffres et pouvoir les trier par ordre croissant
+
+inventaire7 = [7, 3, 54, -3, 90, -245, 445, 26]
+print(inventaire7[:])
+
+inventaire7.sort()
+print(inventaire7[:])
+
+# ou pour inverser les valeurs
+
+inventaire7 = [7, 3, 54, -3, 90, -245, 445, 26]
+print(inventaire7[:])
+
+inventaire7.reverse()
+print(inventaire7[:])
+
+# pour compter le nombre d'éléments redondant dans une liste
+
+inventaire8 = ["potion", "arc", "potion", "potion", "manteau"]
+print(inventaire8[:])
+
+print("Nombre de potions :", inventaire8.count("potion"))
+
+# pour effacer la liste
+
+inventaire.clear()
+print(inventaire[:])
+
+inventaire7[:] = [] # pour effacer la liste aussi
+print(inventaire7[:])
+
+# pour séparer/coup une chaîne de caractére en liste
+
+chaine = "Bonjour à tous"
+chaine = chaine.split(" ")
+print(chaine)
+
+# pour passer d'une liste à une chaîne de caractére
+
+inventaire0 = ["Bonjour", "à", "tous"]
+phrase = " ".join(inventaire0)
+print(phrase)
+
+# pour effectuer une copie de liste
+
+import copy
+liste1 = ["Arc", "cheval", "armure"]
+liste2 = copy.deepcopy(liste1)
+
+print("Liste 1", liste1[:])
+print("Liste 2", liste2[:])
+
+liste2.append("Potion de mana")
+
+print("Liste 1", liste1[:])
+print("Liste 2", liste2[:])
+
+# pour ajouter une liste à une autre
+
+liste3 = ["Arc", "cheval", "armure"]
+liste4 = ["potion", "parchemin", "livre"]
+
+print(liste3[:])
+
+liste3.extend(liste4)
+
+print(liste3[:])
+
+# pour énumérer une liste
+
+inventaire9 = ["Arc", "Epee", "Fleches"]
+for k, v in enumerate(inventaire9):
+    print("Element d'indice {} -> {}".format(k, v))
+
+# Les tuples
+
+liste = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+for chose in enumerate(liste):
+    print(chose)
+
+"""
+Création de tuple : mon_tuple = () #Vide
+mon_tuple = 17, #une seule valeur
+mon_tuple = (17,) #idem qu'au dessus
+mon_tuple = (4, 6) #plusieurs valeurs
+
+Accés aux valeurs : mon_tuple[X] #valeur d'indice X
+"""
+
+mon_tuple = (45, 64) #ou sans parenthése (mais moins lisible)
+print(mon_tuple[1])
