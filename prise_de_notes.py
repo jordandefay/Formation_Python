@@ -738,13 +738,79 @@ for chose in enumerate(liste):
     print(chose)
 
 """
+
+Tuple : conteneur immuable (dont on ne peut modifier les valeurs)
 Création de tuple : mon_tuple = () #Vide
 mon_tuple = 17, #une seule valeur
 mon_tuple = (17,) #idem qu'au dessus
 mon_tuple = (4, 6) #plusieurs valeurs
 
 Accés aux valeurs : mon_tuple[X] #valeur d'indice X
+2 raisons d'utiliser les tuples : affectation multiple de variable
+                                  retour multiple de fonction
 """
 
 mon_tuple = (45, 64) #ou sans parenthése (mais moins lisible)
 print(mon_tuple[1])
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Exemple d'affectation multiple
+
+def get_player_position():
+    posX = 159
+    posY = 23
+
+    return (posX, posY)
+
+# Programme principal
+coordX = 0
+coordY = 0
+
+print("Position du joueur : ({}/{})".format(coordX, coordY))
+
+coordX = 156
+coordY = 34
+
+print("Position du joueur : ({}/{})".format(coordX, coordY))
+
+# Les dictionnaires
+"""
+Création de dictionnaire : dico = {} #vide
+                           dico = {<cle>:<valeur>, <cle2>:<valeur>}
+Accés à une valeur       : dico[<cle>]
+Ajout et modification    : dico[<cle>] = <valeur>
+Suppression              : dico.pop(<cle>)
+                           del dico[<cle>)    
+Copie de dictionnaire    : dico1 = {1:11, 2:22}
+                         : dico2 = dico1.copy()
+"""
+dico = {1:"Jason", "prénom":"Jason"}
+
+print(dico[1])
+print(dico["prénom"])
+
+#Pour ajouter une valeur à dico
+
+dico["chien"] = "C'est un mammifére, le meilleur ami de l'Homme"
+
+print(dico)
+
+dico.pop("chien")
+print(dico)
+
+if 1 in dico:
+    print("Oui")
+else:
+    print("Non")
+
+for key in dico.keys():
+    print(key)
+
+for truc in dico.values():
+    print(truc)
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+def maFonction(**parametres):
+    print(parametres)
+maFonction(p=154, nom="blabla")
