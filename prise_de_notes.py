@@ -814,3 +814,178 @@ for truc in dico.values():
 def maFonction(**parametres):
     print(parametres)
 maFonction(p=154, nom="blabla")
+
+# Les fichiers
+
+"""
+Modes d'ouverture : r (lecture seule)
+                    w (écriture avec remplacement)
+                    a (écriture avec ajout en fin de fichier)
+                    x (lecture et écriture)
+                    r+ (lecture/écriture dans un même fichier)
+                    
+Lecture          : read(), readline(), readlines() # sera considéré comme classe str
+"""
+
+fic = open("docs/donnees.txt", "r") #indiquer le chemin du fichier selectionnés
+fic.close()
+
+if fic.closed:
+    print("Fichier fermé")
+else:
+    print("Fichier encore ouvert")
+    
+#------------------------------------------------------------------------------
+
+fic = open("docs/donnees.txt", "r")
+
+content = fic.read()
+print(content) #pour lire tout le fichier
+
+#------------------------------------------------------------------------------
+# pour récupérer ligne par ligne
+
+fic = open("doc/donnees.txt", "r")
+
+line = fic.readline()
+print(line)
+
+line = fic.readline()
+print(line)
+
+line = fic.readlines() #permet de récupérer toutes les lignes restantes
+print(line)
+
+fic.close()
+
+#------------------------------------------------------------------------------
+# syntaxe plus courte pour ne pas oublier la fermeture du fichier
+with open("docs/donnees.txt", "r") as fic:
+    content = fic.read()
+    print(content)
+    
+    # pas besoin de fermer le fichier avec with
+
+print("Le reste du programme")
+
+#------------------------------------------------------------------------------
+
+# pour écrire dans le fichier
+
+with open("docs/donnees.txt", "w") as fic:
+    nombre0 = 34
+    fic.write(str(nombre0))
+    fic.write("\nBonjour, je suis une chaine de caractére\n")
+    fic.write("Et une autre...\n") #\n pour le retour à la ligne sinon les phrases seront écrites à la suite des autres
+    
+#------------------------------------------------------------------------------
+
+# pour enregistrer un objet en binaire
+
+class Players:
+    def __init__(self, name, level):
+        self.name = name
+        self.level = level
+    def whoami(self):
+        print("{} ({})".format(self.name, self.level))
+
+
+p1 = Players("Jaja", 23)
+with open("players.data", "wb") as fic: # on ajoute un "b" à la suite du mode écriture "w" pour écrire en mode binaire
+    record = pickle.Pickler(fic)
+    record.dump(p1)
+    
+# pour charger l'objet crée en binaire
+
+with open("players.data", "rb") as fic: # on ajoute un "b" à la suite du mode lecture "r" pour lire en mode binaire
+    get_record = pickle.Unpickler(fic)
+    player_one = get_record.load()
+
+player_one.whoami()
+
+#------------------------------------------------------------------------------
+
+ #Introduction tkinter
+
+import tkinter
+
+#from tkinter import * pour tout importer
+
+mainapp = tkinter.Tk()
+mainapp.title("Mon premier programme fenêtré")
+mainapp.geometry("800x600")
+#mainapp.minsize(640, 480) # pour afficher la fenêtre avec des dimensions minimales
+#mainapp.maxsize(1280, 720) # pour afficher la fenêtre avec des dimensions maximales
+#mainapp.resizable(width=False, height=False) # pour interdire le redimensionnement
+#mainapp.positionfrom("user")
+#mainapp.sizefrom("user")
+#geometry("XxY+0+0")
+#position_X = (largeur_ecran // 2) - (largeur_fenetre // 2) # pour centrer la fenetre en largeur
+#position_Y = (hauteur_ecran // 2) - (hauteur_fenetre // 2) # pour centrer la fenetre en hauteur
+
+screen_x = mainapp.winfo_screenmmwidth()
+screen_y = mainapp.winfo_screenheight()
+window_x = 800
+window_y = 600
+geo = "{}x{}+{}+{}".format(window_x, window_y, posX, posY)
+mainapp.geometry(geo)
+
+mainapp.mainloop()
+
+# Premiéres fonctions
+
+"""
+<nom_variable> = <nom_widget>(<widget_parent, <params>...)
+"""
+
+import tkinter
+
+
+app = tkinter.Tk()
+
+message_welcome = tkinter.Message(app, text="Bonjour tout le monde") # affichera le message sur plusieurs lignes
+label_welcome = tkinter.Label(app, text="Bienvenue à tous !") # affichera le message sur une seule ligne
+
+label_welcome.config(text="Nouveau message")
+
+print(label_welcome.cget("text")) # pour afficher le 'text' via la console
+
+label_welcome.pack()
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+import tkinter
+app = tkinter.Tk()
+
+entry_name = tkinter.Entry(app, width=45) #show pour indiquer à l'écran ce que l'on veut (comme des * pour des mots de passe)
+
+entry_name.pack()
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+
+import tkinter
+app = tkinter.Tk()
+
+entry_name = tkinter.Entry(app, exportselection=0) # pour empêcher que la selection se mette dans le presse papier
+
+entry_name.pack()
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+
+import tkinter
+app = tkinter.Tk()
+
+def hello():
+    print("Hello sur le terminal !") # pour afficher ce texte sur le terminal lorque l'user appuie sur OK dans la fenêtre
+
+
+button_quit = tkinter.Button(app, text="OK", command = hello, width=25)#pour la taille du button ou height
+button_quit.pack()
+app.mainloop()
+
+#------------------------------------------------------------------------------
