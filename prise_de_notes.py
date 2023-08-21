@@ -989,3 +989,96 @@ button_quit.pack()
 app.mainloop()
 
 #------------------------------------------------------------------------------
+
+"""
+showerror
+showinfo
+showwarning
+askquestion
+askokcancel
+askyesno
+askretrycancel
+"""
+
+import tkinter
+from tkinter import messagebox
+
+def show_modal_window():
+    messagebox.showerror("ERREUR", "Un probléme est survenu !")
+    
+app = tkinter.Tk()
+btn = tkinter.Button(app, text="Déclencher une erreur", command=show_model_window)
+
+btn.pack()
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+# Variables contrôles
+"""
+StringVar() : chaine de caractéres (str)
+IntVar() : nombre entier (int)
+DoubleVar() : nombre flottant (float)
+BooleanVar() : booléen (bool)
+"""
+import tkinter
+
+# Observateur
+def update_label(*args):
+    var_label.set(var_entry.get())
+
+# Création et paramétrage de la fenêtre
+app = tkinter.Tk()
+app.geometry("400x300")
+app.title("Variables tkinter")
+
+# Widgets...
+var_entry = tkinter.StringVar()
+var_entry.trace("w", update_label)
+entry = tkinter.Entry(app, textvariable=var_entry)
+
+var_label = tkinter.StringVar()
+label = tkinter.Label(app, textvariable=var_label)
+
+label.pack()
+entry.pack()
+
+
+
+# Boucle principale
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+import tkinter
+
+# Observateur
+def update_observer(*args):
+    if var_gender.get():
+        var_label_gender.set("C'est un homme")
+    else:
+        var_label_gender.set("C'est une femme")
+
+# Création et paramétrage de la fenêtre
+app = tkinter.Tk()
+app.geometry("400x300")
+app.title("Variables tkinter")
+
+# Widgets...
+var_gender = tkinter.IntVar()
+var_gender.trace("w", update_observer)
+radio1 = tkinter.Radiobutton(app, text="homme", value=1, varible=var_gender)
+radio2 = tkinter.Radiobutton(app, text="Femme", value=2, variable=var_gender)
+
+var_label_gender = tkinter.StringVar()
+label_gender = tkinter.Label(app, textvariable=var_label_gender)
+
+#trace_vedelete("u", update_observer) pour supprimer l'observateur
+
+radio1.pack()
+radio2.pack()
+label_gender.pack()
+
+
+# Boucle principale
+app.mainloop()
