@@ -1082,3 +1082,184 @@ label_gender.pack()
 
 # Boucle principale
 app.mainloop()
+
+#------------------------------------------------------------------------------
+
+# Postionnement widgets avec mainframe
+
+import tkinter
+
+# Création et paramétrage de la fenêtre
+app = tkinter.Tk()
+app.geometry("640x480")
+app.title("Variables tkinter")
+
+# Widgets...
+mainframe = tkinter.Frame(app, width=300, height=200, borderwidth=1) # pour nommer le cadre écrire 'LabelFrame'
+mainframe.pack()
+
+btn = tkinter.Button(app,text="Bienvenue")
+btn.pack()
+
+# Boucle principale
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+import tkinter
+
+# Création et paramétrage de la fenêtre
+app = tkinter.Tk()
+app.geometry("640x480")
+app.title("Variables tkinter")
+
+# Widgets...
+label = tkinter.Label(app, text="Un label")
+ent = tkinter.Entry(app)
+btn = tkinter.Button(app,text="Bienvenue")
+
+label.pack(side="top") #bottom pour afficher en bas, right/left
+ent.pack(side="top")
+btn.pack(expand=1) #pour que le widget occupe l'espace restant
+#btn.pack(side="left", fill"y") # remplira l'espace y a gauche
+#btn.pack(padx=10, pady=5) pour régler les bordures 
+# Boucle principale
+app.mainloop()
+
+#------------------------------------------------------------------------------
+import tkinter
+"""
+Options Sticky :
+n = nord
+s = sud
+e = est
+w = ouest
+"""
+# Création et paramétrage de la fenêtre
+app = tkinter.Tk()
+app.geometry("640x480")
+app.title("Variables tkinter")
+
+# Widgets...
+label = tkinter.Label(app, text="Un label")
+ent = tkinter.Entry(app)
+btn = tkinter.Button(app,text="Bienvenue")
+
+label.grid(row=0, column=0, columspan=2, rowspan=3) # on considére que notre fenétre est tableau, et permet de positionner nos éléments
+ent.grid(row=0, column=1)
+btn.grid(row=0, column=3)
+
+# Boucle principale
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+# Création de menu sous tkinter
+
+"""
+# add_checkbutton()
+# add_separator()
+# add_radiobutton()
+"""
+
+import tkinter
+
+
+def about():
+    about_window = tkinter.Toplevel(app)
+    about_window.title("A propos")
+    lb = tkinter.Label(about_window, text="Bonjour")
+    
+def hello():
+    print("Coucou !")
+
+# Création et paramétrage de la fenêtre
+app = tkinter.Tk()
+app.geometry("640x480")
+app.title("Variables tkinter")
+
+# Widgets...
+mainmenu = tkinter.Menu(app)
+
+first_menu = tkinter.Menu(mainmenu, tearoff=0) 
+first_menu.add_command(label="Option1", command=hello)
+first_menu.add_command(label="Option2")
+first_menu.add_command(label="Quitter", command=app.quit)
+
+second_menu = tkinter.Menu(mainmenu)
+second_menu.add_command(label="Commande1")
+second_menu.add_command(label="A propos", command=about)
+
+mainmenu.add_cascade(label="Premier", menu=first_menu)
+mainmenu.add_cascade(label="Second", menu=second_menu)
+
+
+
+# Boucle principale
+app.config(menu=mainmenu)
+app.mainloop()
+
+#------------------------------------------------------------------------------
+
+# Gestion temps
+
+import time
+
+print("Le 1er texte")
+
+time.sleep(5) #permet au processus de se mettre en pause pendant 5 sec
+
+print("Le 2nd texte")
+
+#------------------------------------------------------------------------------
+
+import time
+
+# 1er Janvier 1970 à 00h00 = Epoch (date de référence pour l'informatique)
+
+begin = time.time()
+print("Début")
+
+time.sleep(5)
+
+end = time.time()
+print("Fin")
+
+print(f"Temps exécuté : {end - begin}s")
+
+#------------------------------------------------------------------------------
+"""
+                localtime()
+(TIMESTAMP)---------------------> structure de temps
+           <---------------------                     
+                mktime()
+"""
+import time
+
+tps = time.localtime()
+print(tps)
+
+tps = time.mktime(tps)
+print(tps)
+
+#------------------------------------------------------------------------------
+
+import time
+
+"""
+%d : jour(01 à 31)
+%m : mois (01 à 12)
+%Y : année (ex : 2023 - %y - 00 à 99)
+%H : heure (00 à 23)
+%I : minutes (00 à 59)
+%S : secondes (00 à 59)
+%p : AM/PM
+
+%A : jour semaine / %a (jour abrégé)
+%B: mois / %b (mois abrégé)
+
+%Z : fuseau horaire (timezone)  
+"""
+
+
+my_time = time.strftime("%d/%m/%Y")
