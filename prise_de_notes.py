@@ -1367,3 +1367,43 @@ print("Fin du programme")
 #------------------------------------------------------------------------------
 
 # Serveur HTTP et page web
+"""
+Côté serveur
+"""
+import http.server
+import socketserver
+
+port = 80
+address = ("", port)
+
+server = http.server.HTTPServer
+handler = http.server.CGIHTTPRequestHandler
+handler.cgi_directories = ["/"]
+httpd = server(address, handler)
+
+print(f"Serveur démarré sur le port {port}")
+
+httpd.serve_forever()
+
+"""
+Côté client
+"""
+
+#index.py
+
+import cgi
+
+print("Content-type: text/html; charset=utf-8\n")
+html = """<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Ma page Web</title>
+</head>
+<body>
+    <h1>Bonjour !</h1>
+    <p>bla bla bla</p>
+</body>
+</html>
+"""
+
+print("<h1>Bonjour</h1>")
