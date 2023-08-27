@@ -1263,3 +1263,107 @@ import time
 
 
 my_time = time.strftime("%d/%m/%Y")
+
+#------------------------------------------------------------------------------
+
+# Gestion dates
+
+import datetime
+
+d1 = datetime.datetime(2023, 8, 26, 11, 16, 43)
+print(d1)
+
+d2 = datetime.datetime(2023, 8, 26, 11, 17, 33)
+if d1 < d2:
+    print("d1 est plus ancien que d2")
+else:
+    print("d1 est plus récent que d2")
+
+print(d1.year) #pour récupérer l'année (seulement) de d1
+
+#------------------------------------------------------------------------------
+
+import datetime
+
+t1 = datetime.time(23, 00, 45)
+print(t1) # permet d'afficher l'heure indiqué au dessus
+
+print(datetime.now())
+
+#------------------------------------------------------------------------------
+
+import datetime
+from datetime import date
+
+now = date.today()
+born = datetime.date(1991, 2, 14)
+print(f"{now.year - born.year} ans.")
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Programmation asynchrone
+import time
+import threading
+
+class MyProcess(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+        
+    def run(self):
+        i = 0
+        while i < 3:
+            print(threading.current_thread())
+            time.sleep(0.3)
+            i += 1
+
+
+thread1 = MyProcess()
+thread2 = MyProcess()
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+
+print("Fin du programme")
+
+#------------------------------------------------------------------------------
+
+# Les processus bloquants
+
+import time
+import threading
+
+
+my_lock = threading.RLock()
+
+class MyProcess(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+        
+    def run(self):
+        i = 0
+        while i < 3:
+            with my_lock:
+                letterss = "ABC"
+                for lt in letterss:
+                    print(lt)
+                time.sleep(0.3)
+            i += 1
+
+
+thread1 = MyProcess()
+thread2 = MyProcess()
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+
+print("Fin du programme")
+
+#------------------------------------------------------------------------------
+
+# Serveur HTTP et page web
