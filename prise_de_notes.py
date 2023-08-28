@@ -1407,3 +1407,161 @@ html = """<!DOCTYPE html>
 """
 
 print("<h1>Bonjour</h1>")
+    <p>bla bla bla</p>
+</body>
+</html>
+"""
+
+print("<h1>Bonjour</h1>")
+
+#------------------------------------------------------------------------------
+
+# Données formulaires
+
+import cgi
+
+print("Content-type: text/html; charset=utf-8\n")
+html = """<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Ma page Web</title>
+</head>
+<body>
+    <h1>Ma page web Python avec CGI</h1>
+    
+    <form method="post" action="result.py">
+        <p><input type>="text" name="username">
+        <input type="submit" value="Envoyer"></p>
+    </form>
+</body>
+</html>
+"""
+
+# result.py
+
+import cgi
+import cgitb
+
+cgitb.enable()
+form = cgi.FieldStorage()
+
+if form.getvalue("username"):
+    username = form.getvalue("username")
+else:
+    raise Exception("Pseudo non transmis")
+
+html = """<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Ma page Web</title>
+</head>
+<body>
+    <h1>Page de résultat</h1>
+    """
+print(html)
+print(f"Bonjour {username}")
+html = """
+</body>
+</html>
+"""
+print(html)
+
+#------------------------------------------------------------------------------
+
+# Les cookies
+
+import cgi
+import http.cookies
+import datetime
+import os
+import sys
+import codecs
+
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+
+"""
+expires
+path
+comment
+domain
+secure
+version
+httponly
+
+print("Set-Cookie : pref_lang=fr; httponly") # pour intégrer les cookies
+expiration = datetime.datetime.now() + datetime.timedelta(days=365) # pour intégrér les cookies il est préférable de créer des dictionnaires
+expiration = expiration.strftime("%a, %d-%b-%Y %H:%M:%S")
+my_cooki = http.cookies.SimpleCookie()
+my_cookie["pref_lang"] = "fr"
+my_cookie["pref_lang"]["expires"] = expiration
+my_cookie["pref_lang"]["httponly"] = True
+"""
+print("Set-Cookie : pref_lang=fr; httponly")
+
+print("Content-type: text/html; charset=utf-8\n")
+print(my_cookie.output())
+html = """<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Ma page Web</title>
+</head>
+<body>
+    <h1>Cookies avec Python</h1>
+"""
+print(html)
+
+try:
+    user_lang = http.cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+    print(user_lang["pref_lang"].value)
+except(http.cookies.CookieError, KeyError):
+    print("Not find")
+
+html = """
+</body>
+</html>
+"""
+print(html)
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Base de données (avec DB Browser SqLite)
+import sqlite3
+# CRUD : Create, Read, Update, Delete
+connection = sqlite3.connect("base.db")
+cursor = connection.cursor()
+
+my_username = ("Jason",)
+cursor.execute('SELECT * FROM tt_users WHERE user_name = ?', my_username)
+result = cursor.fetchone()[1]
+print(f"Le nom d'utilisateur est : {result}")
+
+connecion.close()
+
+#-----------------------------------------------------------------------------------------------------------------------
+import sqlite3
+
+connection = sqlite3.connect("base.db")
+cursor = connection.cursor()
+
+new_user = (cursor.lastrowid, "Julie", 23)
+cursor.execute('INSERT INTO tt_users VALUES(?,?,?)', new_user)
+connection.commit()
+print("Nouvel utilisateur ajouté!")
+
+connection.close()
+
+#-----------------------------------------------------------------------------------------------------------------------
+import sqlite3
+
+connection = sqlite3.connect("base.db")
+cursor = connection.cursor()
+
+req = cursor.execute('SELECT * FROM tt_users')
+
+for row in req.fetchall():
+    print(row[1]
+except Exception as e:
+    print("[ERREUR]", e)
+    connection.rollback()
+finally:
+    connection.close()
