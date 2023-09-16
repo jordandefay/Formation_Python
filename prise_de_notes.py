@@ -1565,3 +1565,78 @@ except Exception as e:
     connection.rollback()
 finally:
     connection.close()
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Les sockets (software)
+#server.py (par exemple, pour serveur)
+import socket
+import threading
+
+class ThreadForClient(threading.Thread):
+    def __init__(self, conn):
+        threading.Thread.__init__(self)
+        self.conn = client
+
+    def run(self):
+        data = self.conn.recv(1024)
+        data = data.decode("utf8")
+        print(data)
+
+host, port =('', 5566)
+
+socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+socket.bind((host, port))
+print("Serveur démarré")
+
+while True:
+    socket.listen(5)
+    conn, address = socket.accept()
+    print("En écoute...")
+
+    my_thread = ThreadForClient(conn)
+    my_thread.start()
+
+    data = conn.recv(1024)
+    data = data.decode("utf8")
+    print(data)
+
+conn.close()
+socket.close()
+
+#----------------------------------------------------------------------------------------------------------------------
+#client.py (par exemple, pour client)
+
+import socket
+
+host, port = ('localhost', 5566)
+socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+    socket.connect((host, port))
+    print("Client connecté")
+
+    data = "Bonjour à toi, je suis le client ^^!"
+    data = data.encode("utf8")
+    socket.sendall(data)
+
+
+except ConnectionRefusedError:
+    print("Connexion au serveur échouée !")
+finally:
+    socket.close()
+
+#-----------------------------------------------------------------------------------------------------------------------
+#Introduction pygame
+
+import pygame
+
+pygame.init()
+screen = pygame.display.set_mode((640, 480))
+
+launched = True
+
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
