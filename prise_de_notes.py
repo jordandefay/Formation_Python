@@ -1640,3 +1640,334 @@ while launched:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             launched = False
+
+#Premiére fenêtre
+
+import pygame
+"""
+pygame.FULLSCREEN (plein écran)
+pygame.RESIZABLE 
+pygame.NOFRAME
+
+pygame.OPENGL
+pygame.HWSURFACE (accélération matérielle)
+pygame.DOUBLEBUF
+"""
+res = (640, 480)
+
+pygame.init()
+pygame.display.set_caption("TITRE DE LA FENETRE")
+window_surface = pygame.display.set_mode(res, pygame.RESIZABLE | pygame.NOFRAME)
+
+print(pygame.display.Info())
+#print(pygame.get_sdl_version()) pour check la version de SDL
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
+
+pygame.quit() #pour refaire une initialisation, sinon Python quit lui même
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Dessiner une surface
+
+import pygame
+"""
+ Surface, rect
+ Rect(left, top, width, height)
+"""
+pygame.init()
+
+window_resolution = (640, 480)
+blue_color = (89, 152, 255)
+black_color = (0, 0, 0)
+pygame.display.set_caption("Python #36")
+
+window_surface = pygame.display.set_mode(window_resolution)
+window_surface.fill(blue_color)
+coords = [(10,10), (100,10), (30, 50), (50,40)]
+
+
+pygame.draw.line(window_surface, black_color, [10, 10],[100, 100] )
+#rect_form = pygameRect(10, 10, 150, 65)
+#pygame.draw.rect(window_surface, black_color, rect_form)
+#pygame.draw.circle(window_surface, black_color,[150, 100], 50)
+#pygame.draw.polygon(window_surface, black_color, coords)
+
+pygame.display.flip()
+
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Afficher images
+
+import pygame
+
+pygame.init()
+window_resolution = (640, 480)
+blank_color = (255, 255, 255)
+black_color = (0, 0, 0)
+
+pygame.display.set_caption("Python 37")
+window_surface = pygame.display.set_mode(window_resolution)
+
+cat_image = pygame.image.load("cat.jpg")
+cat_image.convert()
+cat_image.set_colorkey(blank_color) # pour mettre en transparence la zone choisie
+
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
+
+    # Corps du programme
+    window_surface.fill(blank_color)
+    window_surface.blit(cat_image, [10, 10])
+    pygame.display.flip()
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# L'objet Rect
+
+import pygame
+import time
+
+"""
+pygame.Rect(x, y, width, height)
+Rect.copy()
+Rect.move() | Rect.move_ip()
+Rect.inflate()
+Rect.coliderect()
+
+"""
+
+pygame.init()
+window_resolution = (640, 480)
+black_color = (0, 0, 0)
+red = (255, 0, 0)
+i = 0
+
+pygame.display.set_caption("Python 38")
+window_surface = pygame.display.set_mode(window_resolution)
+
+myrect = pygame.Rect(10, 10, 250, 80)
+myblock = pygame.Rect(600, 50, 20, 300)
+pygame.draw.rect(window_surface, red, myrect)
+pygame.draw.rect(window_surface, blue_color, myblock)
+pygame.display.flip()
+
+while not myrect.colliderect(myblock):
+    time.sleep(.010) # 10 millisecondes
+    window_surface.fill(black_color)
+    myrect.x += 1
+    pygame.draw.rect(window_surface, red, myrect)
+    pygame.draw.rect(window_surface, blue_color, myblock)
+    pygame.display.flip()
+
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+#Afficher du texte
+
+import pygame
+
+"""
+arial_font.set_bold() texte en gras
+arial_font.set_italic() texte en italique
+arial_font.set_underline() texte surligné
+"""
+
+pygame.init()
+window_resolution = (640, 480)
+
+pygame.display.set_caption("Python 39")
+window_surface = pygame.display.set_mode(window_resolution)
+
+arial_font = pygame.font.SysFont("arial", 20)
+hello_text_surface = arial_font.render("Hello World ! ", False, blue_color)
+
+
+window_surface.blit(hello_text_surface, [10, 10])
+pygame.display.flip()
+
+# récupére le nom des font et l'affiche en console print(pygame.font.get_fonts())
+
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
+
+# pour charger un fichier font : pygame.font.Font("XXXXXXX.ttf", 10)
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Evenements
+
+import pygame
+"""
+QUIT ==> none
+ACTIVEEVENT ==> gain, state
+KEYDOWN ==> unicode, key, mod
+KEYUP ==> key, mod
+MOUSEMOTION ==> pos, rel, buttons
+MOUSEBUTTONUP ==> pos, button
+MOUSEBUTTONDOWN ==> pos, button
+JOYAXISMOTION ==> joy, axis, value
+JOYBALLMOTION ==> joy, ball, rel
+JOYHATMOTION ==> joy, hat, value
+JOYBUTTONUP ==> joy, button
+JOYBUTTONDOWN ==> joy, button
+VIDEORESIZE ==> size, w, h
+VIDEOEXPOSE ==> none
+USEREVENT ==> code
+"""
+window_resolution = (640, 480)
+
+pygame.init()
+pygame.display.set_caption("Python 40")
+window_surface = pygame.display.set_mode(window_resolution)
+
+
+arial_font = pygame.font.SysFont("arial", 30)
+dimensions_text = arial_font.render("{}".format(window_resolution), True, while_color)
+window_surface.blit(dimensions_text, [10, 10])
+
+pygame.display.flip()
+
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT():
+            launched = False
+        elif event.type == pygame.VIDEORESIZE:
+            window_surface.fill(black_color)
+            dimensions_text = arial_font.render("{}x{}".format(event.w, event.h), True, while_color)
+            window_surface.blit(dimensions_text, [10, 10])
+            pygame.display.flip()
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+pygame.init()
+pygame.display.set_caption("Python 40")
+window_surface = pygame.display.set_mode(window_resolution)
+
+pygame.display.flip()
+
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT():
+            launched = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                print("HAUT")
+            elif event.key == pygame.K_DOWN:
+                print("BAS")
+            elif event.key == pygame.K_LEFT:
+                print("GAUCHE")
+            elif event.key == pygame.K_RIGHT:
+                print("DROITE")
+            else:
+                print("AUTRE TOUCHE...")
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+pygame.init()
+pygame.display.set_caption("Python 40")
+window_surface = pygame.display.set_mode(window_resolution)
+
+pygame.display.flip()
+
+launched = True
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT():
+            launched = False
+        elif event.type == pygame.MOUSEMOTION:
+            print("{}".format(event.pos))
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+# Mesurer le temps
+
+import pygame
+
+window_resolution = (640, 480)
+black_color = (0, 0, 0)
+blue_color = (132, 180, 255)
+launched = True
+
+pygame.init()
+#clock = pygame.time.Clock()
+#pygame.time.set_timer(pygame.USEREVENT, 2000)
+
+pygame.display.set_caption("Python 41")
+window_surface = pygame.display.set_mode(window_resolution)
+arial_font = pygame.font.SysFont("arial", 36)
+text = arial_font.render("Bjr les gens !", True, blue_color)
+
+#pygame.time.wait(2000) permet d'endormir le programme pdt 2 secondes
+#pygame.delay(5000) permet d'endormir le programme pdt 5 secondes via le processeur
+print(pygame.time.get_ticks())
+
+window_surface.blit(text, [50, 50])
+pygame.display.flip()
+
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
+        elif event.type == pygame.USEREVENT:
+            window_surface.fill(black_color)
+            print(f"{clock.get_fps():.2f} FPS")
+            window_surface.blit(dimensions_text, [10, 10])
+            pygame.display.flip()
+
+    clock.tick(30) 30 fps
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+import pygame
+"""
+<Sound>.play(loop = 0, time = 0, fadein = 2000)
+       .stop()
+       .fadeout(ms)
+       .set_volume(0.0 -> 1.0)
+       .get_volume()
+       .get_length()
+       
+Pour utiliser le fichier audio en streaming : 
+
+pygame.mixer.music.load("song.ogg")
+pygame.mixer.music.play()
+"""
+window_resolution = (640, 480)
+launched = True
+
+pygame.init()
+pygame.display.set_caption("Python 42")
+window_surface = pygame.display.set_mode(window_resolution)
+
+song = pygame.mixer.Sound("celtic.ogg")
+song.play()
+
+pygame.display.flip()
+
+while launched:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            launched = False
+
+#-----------------------------TERMINE-----------------------------------------------------------------------------------
